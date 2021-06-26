@@ -1,12 +1,29 @@
 <template>
-  <Quotes />
+  <div>
+    <Calendar />
+    <Quote />
+  </div>
 </template>
 
-<script setup>
-  import Quotes from "./components/Quotes.vue"
+<script>
+  import Quote from './components/Quote.vue'
+  import Calendar from './components/Calendar.vue'
+
+  export default {
+    components: {
+      Quote,
+      Calendar
+    },
+
+    data() {
+      return {
+        date: new Date()
+      };
+    }
+  }
 </script>
 
-<style>
+<style scoped>
   #app {
     font-family: Avenir, Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
