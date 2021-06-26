@@ -1,7 +1,7 @@
 <template>
   <div>
     <Calendar />
-    <Quote />
+    <Quote :date="date" />
   </div>
 </template>
 

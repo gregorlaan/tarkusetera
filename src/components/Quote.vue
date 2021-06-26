@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="quote-container">
     <div v-if="currentQuote">
       {{ currentQuote.desc }}
     </div>
@@ -14,11 +14,16 @@
   import Quotes from '../data/quotes.json';
 
   export default {
-    computed: {
-      date() {
-        return this.$parent.date;
-      },
+    props: {
+      date: {
+        type: Object,
+        default() {
+          return new Date();
+        }
+      }
+    },
 
+    computed: {
       isoDate() {
         return this.date.toISOString().split('T')[0];
       },
