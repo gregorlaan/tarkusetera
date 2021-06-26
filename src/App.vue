@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="h-full grid grid-cols-1 lg:grid-cols-2">
     <Calendar />
     <Quote :date="date" />
   </div>
@@ -23,7 +23,11 @@
   }
 </script>
 
-<style scoped>
+<style>
+  html, body, #app {
+    height: 100%;
+  }
+
   #app {
     font-family: Avenir, Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
