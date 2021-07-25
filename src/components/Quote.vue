@@ -31,9 +31,9 @@
       <template v-for="(socialMediaLink, key) in currentQuote.socialMedia">
         <component
           :is="socialMediaToComponent[key]"
-          v-if="currentQuote?.socialMedia?.instagram"
+          v-if="currentQuote?.socialMedia"
           :key="key"
-          :href="currentQuote.socialMedia.instagram"
+          :href="currentQuote.socialMedia[key]"
         />
       </template>
     </div>
