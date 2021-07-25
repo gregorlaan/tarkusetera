@@ -20,8 +20,22 @@
       </div>
 
       <div v-else>
-        Sorry, no quote today
-      </div> 
+        Täna ei ole uut tarkusetera
+      </div>
+    </div>
+
+    <div
+      v-if="currentQuote?.socialMedia"
+      class="mt-8"
+    >
+      <template v-for="(socialMediaLink, key) in currentQuote.socialMedia">
+        <component
+          :is="socialMediaToComponent[key]"
+          v-if="currentQuote?.socialMedia?.instagram"
+          :key="key"
+          :href="currentQuote.socialMedia.instagram"
+        />
+      </template>
     </div>
   </div>
 </template>
@@ -29,7 +43,19 @@
 <script>
   import Quotes from '../data/quotes.json';
 
+  import instagramLink from './socialMediaLinks/instagram.vue';
+  import facebookLink from './socialMediaLinks/facebook.vue';
+  import twitterLink from './socialMediaLinks/twitter.vue';
+  import pinterestLink from './socialMediaLinks/pinterest.vue';
+
   export default {
+    components: {
+      instagramLink,
+      facebookLink,
+      twitterLink,
+      pinterestLink
+    },
+
     props: {
       date: {
         type: Object,
@@ -63,7 +89,13 @@
           'Oktoober',
           'November',
           'Detsember'
-        ]
+        ],
+        socialMediaToComponent: {
+          instagram: instagramLink,
+          facebook: facebookLink,
+          twitter: twitterLink,
+          pinterest: pinterestLink
+        }
       };
     },
 
@@ -71,7 +103,7 @@
       isoDate() {
         return this.date.toISOString().split('T')[0];
       },
-      
+
       weekDay() {
         return this.weekDays[this.date.getDay()];
       },
