@@ -41,6 +41,7 @@
 </template>
 
 <script>
+  import { markRaw } from 'vue';
   import Quotes from '../data/quotes.json';
 
   import instagramLink from './socialMediaLinks/instagram.vue';
@@ -91,10 +92,10 @@
           'Detsember'
         ],
         socialMediaToComponent: {
-          instagram: instagramLink,
-          facebook: facebookLink,
-          twitter: twitterLink,
-          pinterest: pinterestLink
+          instagram: markRaw(instagramLink),
+          facebook: markRaw(facebookLink),
+          twitter: markRaw(twitterLink),
+          pinterest: markRaw(pinterestLink)
         }
       };
     },

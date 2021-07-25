@@ -37,7 +37,9 @@
           popover: {
             label: quote.desc,
           },
-          bar: true
+          highlight: {
+            fillMode: 'outline',
+          }
         }));
       }
     }
@@ -45,16 +47,6 @@
 </script>
 
 <style>
-  .vc-container .vc-day .vc-focusable,
-  .vc-container .vc-day .vc-highlight {
-    padding: 1rem;
-    margin-bottom: 0.25rem;
-  }
-
-  .vc-container {
-    border: 0;
-  }
-
   .vc-arrows-container {
     display: none;
   }
