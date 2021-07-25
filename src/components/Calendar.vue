@@ -1,7 +1,8 @@
 <template>
   <div class="flex justify-center items-center sm:p-4">
-    <DatePicker 
+    <DatePicker
       v-model="$parent.date"
+      :attributes="getQuotes()"
       is-expanded
       is-required
       :first-day-of-week="2"
@@ -15,6 +16,7 @@
 
 <script>
   import { DatePicker } from 'v-calendar';
+  import Quotes from '../data/quotes.json';
 
   export default {
     components: {
@@ -24,7 +26,19 @@
     data() {
       return {
         today: new Date(),
-        minDate: new Date('2021-06-01')
+        minDate: new Date('2021-07-01')
+      }
+    },
+
+    methods: {
+      getQuotes() {
+        return Quotes.map(quote => ({
+          dates: new Date(quote.isoDate),
+          popover: {
+            label: quote.desc,
+          },
+          bar: true
+        }));
       }
     }
   }
@@ -34,6 +48,7 @@
   .vc-container .vc-day .vc-focusable,
   .vc-container .vc-day .vc-highlight {
     padding: 1rem;
+    margin-bottom: 0.25rem;
   }
 
   .vc-container {
