@@ -16,6 +16,7 @@
 
     <div class="relative w-full max-w-screen-lg mx-auto">
       <button
+        v-if="!minDateExceeded"
         class="absolute top-0 bottom-0 left-0 z-10 fill-current text-blue-200 hover:text-white"
         @click="onPreviousDate()"
       >
@@ -27,6 +28,7 @@
       </button>
 
       <button
+        v-if="!maxDateExceeded"
         class="absolute top-0 bottom-0 right-0 z-10 fill-current text-blue-200 hover:text-white"
         @click="onNextDate()"
       >
@@ -158,14 +160,24 @@
 
       currentQuote() {
         return Quotes.find(quote => quote.isoDate == this.isoDate);
+      },
+
+      minDateExceeded() {
+        const minDate = new Date('2021-07-01');
+
+        return this.$parent.date.getDate() === minDate.getDate();
+      },
+
+      maxDateExceeded() {
+        const maxDate = new Date();
+
+        return this.$parent.date.getDate() === maxDate.getDate();
       }
     },
 
     methods: {
       onPreviousDate() {
-        const minDate = new Date('2021-07-01');
-
-        if(this.$parent.date.getDate() === minDate.getDate()) {
+        if(this.minDateExceeded) {
           return;
         }
 
@@ -173,9 +185,7 @@
       },
 
       onNextDate() {
-        const maxDate = new Date();
-
-        if(this.$parent.date.getDate() === maxDate.getDate()) {
+        if(this.maxDateExceeded) {
           return;
         }
 
