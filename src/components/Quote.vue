@@ -14,7 +14,7 @@
       </div>
     </div>
 
-    <div class="text-7xl mt-8">
+    <div class="text-4xl md:text-7xl mt-8">
       <div v-if="currentQuote">
         {{ currentQuote.desc }}
       </div>
