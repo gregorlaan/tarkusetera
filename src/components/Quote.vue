@@ -14,7 +14,7 @@
       </div>
     </div>
 
-    <div class="relative p-8 text-4xl md:text-7xl w-full max-w-screen-lg mx-auto">
+    <div class="relative w-full max-w-screen-lg mx-auto">
       <button
         class="absolute top-0 bottom-0 left-0 z-10 fill-current text-blue-200 hover:text-white"
         @click="onPreviousDate()"
@@ -38,12 +38,14 @@
         </svg>
       </button>
 
-      <div v-if="currentQuote">
-        {{ currentQuote.desc }}
-      </div>
+      <div class="p-12 text-4xl md:text-7xl">
+        <div v-if="currentQuote">
+          {{ currentQuote.desc }}
+        </div>
 
-      <div v-else>
-        Täna ei ole uut tarkusetera
+        <div v-else>
+          Täna ei ole uut tarkusetera
+        </div>
       </div>
     </div>
 
