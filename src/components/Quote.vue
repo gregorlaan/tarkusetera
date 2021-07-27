@@ -1,6 +1,6 @@
 <template>
-  <div class="quote-container flex flex-col justify-center items-center text-center p-6 bg-blue-600 text-blue-50">
-    <div>
+  <div class="quote-container lg:min-h-1/2 flex flex-col lg:justify-center items-center text-center bg-blue-600 text-blue-50">
+    <div class="p-6">
       <div class="text-2xl">
         {{ weekDay }}
       </div>
@@ -14,7 +14,7 @@
       </div>
     </div>
 
-    <div class="text-4xl md:text-7xl mt-8">
+    <div class="text-4xl md:text-7xl">
       <div v-if="currentQuote">
         {{ currentQuote.desc }}
       </div>
@@ -26,7 +26,7 @@
 
     <div
       v-if="currentQuote?.socialMedia"
-      class="mt-8"
+      class="p-6"
     >
       <template v-for="(socialMediaLink, key) in currentQuote.socialMedia">
         <component
@@ -125,7 +125,4 @@
 </script>
 
 <style scoped>
-  .quote-container {
-    min-height: 50vh;
-  }
 </style>
