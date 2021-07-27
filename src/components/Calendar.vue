@@ -34,9 +34,6 @@
       getQuotes() {
         return Quotes.map(quote => ({
           dates: new Date(quote.isoDate),
-          popover: {
-            label: quote.desc,
-          },
           highlight: {
             fillMode: 'outline',
           }
