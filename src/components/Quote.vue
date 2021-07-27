@@ -1,6 +1,6 @@
 <template>
-  <div class="quote-container lg:min-h-1/2 flex flex-col lg:justify-center items-center text-center bg-blue-600 text-blue-50">
-    <div class="p-6">
+  <div class="quote-container lg:min-h-1/2 flex flex-col lg:justify-between items-center text-center bg-blue-600 text-blue-50">
+    <div class="p-8">
       <div class="text-2xl">
         {{ weekDay }}
       </div>
@@ -14,7 +14,7 @@
       </div>
     </div>
 
-    <div class="text-4xl md:text-7xl">
+    <div class="p-4 text-4xl md:text-7xl w-full max-w-screen-lg mx-auto">
       <div v-if="currentQuote">
         {{ currentQuote.desc }}
       </div>

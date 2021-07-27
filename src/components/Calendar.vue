@@ -1,5 +1,5 @@
 <template>
-  <div class="flex justify-center items-center sm:p-4">
+  <div class="flex justify-center items-center sm:p-4 w-full max-w-screen-lg mx-auto">
     <DatePicker
       v-model="$parent.date"
       :attributes="getQuotes()"
