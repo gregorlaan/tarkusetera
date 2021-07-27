@@ -5,7 +5,7 @@ module.exports = {
     extend: {},
     minHeight: {
       '1/2': '50%',
-     }
+    }
   },
   variants: {
     extend: {
