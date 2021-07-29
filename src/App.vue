@@ -19,6 +19,43 @@
       return {
         date: new Date()
       };
+    },
+
+    created() {
+      this.initDate();
+    },
+
+    methods: {
+      initDate() {
+        this.date = this.getDateFromUrlParameter();
+      },
+
+      getDateFromUrlParameter() {
+        const isoDate = new URLSearchParams(window.location.search).get('date');
+
+        if(!isoDate) {
+          return new Date();
+        }
+
+        const date = new Date(isoDate);
+
+        if(!date || date == 'Invalid Date') {
+          return new Date();
+        }
+
+        if(!this.validateDate(date)) {
+          return new Date();
+        }
+
+        return date;
+      },
+
+      validateDate(date) {
+        const minDate = new Date('2021-07-01');
+        const maxDate = new Date();
+
+        return date >= minDate && date <= maxDate;
+      }
     }
   }
 </script>
