@@ -3,11 +3,12 @@
     <DatePicker
       v-model="$parent.date"
       :attributes="getQuotes()"
-      is-expanded
-      is-required
       :first-day-of-week="2"
       :min-date="minDate"
       :max-date="today"
+      :change="updateDateUrlParameter()"
+      is-expanded
+      is-required
       locale="et"
       color="blue"
     />
@@ -38,6 +39,12 @@
             fillMode: 'outline',
           }
         }));
+      },
+
+      updateDateUrlParameter() {
+        const isoDate = this.$parent.date?.toISOString().split('T')[0];
+        const dateQueryString = 'tarkusetera?date=' + isoDate;
+        history.replaceState({}, 'Tarkusetera', dateQueryString);
       }
     }
   }
