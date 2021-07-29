@@ -43,7 +43,7 @@
 
       updateDateUrlParameter() {
         const isoDate = this.$parent.date?.toISOString().split('T')[0];
-        const dateQueryString = 'tarkusetera?date=' + isoDate;
+        const dateQueryString = '?date=' + isoDate;
         history.replaceState({}, 'Tarkusetera', dateQueryString);
       }
     }
