@@ -165,13 +165,13 @@
       minDateExceeded() {
         const minDate = new Date('2021-07-01');
 
-        return this.$parent.date.getDate() === minDate.getDate();
+        return this.$parent.date.toDateString() === minDate.toDateString();
       },
 
       maxDateExceeded() {
         const maxDate = new Date();
 
-        return this.$parent.date.getDate() === maxDate.getDate();
+        return this.$parent.date.toDateString() === maxDate.toDateString();
       }
     },
 
@@ -181,7 +181,7 @@
           return;
         }
 
-        this.$parent.date = new Date(this.date.setDate(this.date.getDate() - 1));
+        this.$parent.date = new Date(this.date.setDate(this.$parent.date.getDate() - 1));
       },
 
       onNextDate() {
@@ -189,7 +189,7 @@
           return;
         }
 
-        this.$parent.date = new Date(this.date.setDate(this.date.getDate() + 1));
+        this.$parent.date = new Date(this.date.setDate(this.$parent.date.getDate() + 1));
       }
     }
   }
