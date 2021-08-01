@@ -1,5 +1,5 @@
 <template>
-  <div class="quote-container lg:min-h-1/2 flex flex-col lg:justify-between items-center text-center bg-blue-600 text-blue-50">
+  <div class="quote-container min-h-screen flex flex-col justify-between items-center text-center bg-blue-600 text-blue-50">
     <div class="p-8">
       <div class="text-2xl">
         {{ weekDay }}
