@@ -44,7 +44,7 @@
 
       onDateChange() {
         this.updateDateUrlParameter();
-        this.onMove();
+        //this.updateCalendarMonthView(); // This can't be attached to calendar change method
       },
 
       updateDateUrlParameter() {
@@ -53,24 +53,20 @@
         history.replaceState({}, 'Tarkusetera', dateQueryString);
       },
 
-      async onMove() {
+      async updateCalendarMonthView() {
         const calendar = this.$refs.calendar;
 
         if(!calendar) {
           return;
         }
 
-        await calendar.move(this.$parent.date);
+        await calendar.focusDate(this.$parent.date);
       }
     }
   }
 </script>
 
 <style>
-  .vc-arrows-container {
-    display: none;
-  }
-
   .vc-title {
     padding: 1rem;
   }
