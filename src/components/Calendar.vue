@@ -1,12 +1,13 @@
 <template>
   <div class="flex justify-center items-center sm:p-4 w-full max-w-screen-lg mx-auto">
     <DatePicker
+      ref="calendar"
       v-model="$parent.date"
       :attributes="getQuotes()"
       :first-day-of-week="2"
       :min-date="minDate"
       :max-date="today"
-      :change="updateDateUrlParameter()"
+      :change="onDateChange()"
       is-expanded
       is-required
       locale="et"
@@ -41,10 +42,25 @@
         }));
       },
 
+      onDateChange() {
+        this.updateDateUrlParameter();
+        this.onMove();
+      },
+
       updateDateUrlParameter() {
         const isoDate = this.$parent.date?.toISOString().split('T')[0];
         const dateQueryString = '?date=' + isoDate;
         history.replaceState({}, 'Tarkusetera', dateQueryString);
+      },
+
+      async onMove() {
+        const calendar = this.$refs.calendar;
+
+        if(!calendar) {
+          return;
+        }
+
+        await calendar.move(this.$parent.date);
       }
     }
   }
