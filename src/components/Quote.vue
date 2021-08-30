@@ -40,7 +40,7 @@
         </svg>
       </button>
 
-      <div class="p-12 text-4xl md:text-7xl">
+      <div class="p-12 text-4xl md:text-7xl break-words">
         <div v-if="currentQuote">
           {{ currentQuote.desc }}
         </div>
